@@ -1,0 +1,18 @@
+
+.shop-image{
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.shop-name{
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+}
