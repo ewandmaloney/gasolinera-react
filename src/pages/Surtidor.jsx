@@ -1,14 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import CarImage from "../assets/img/car.png";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 
 const Surtidor = () => {
+  const navigate = useNavigate();
+
+  const clickSurtidor = (id) => {
+    localStorage.setItem("surtidor", id);
+    navigate("/product");
+  };
+
   const surtidores = [
     { id: 1, name: "surtidor 1" },
     { id: 2, name: "surtidor 2" },
@@ -19,129 +26,57 @@ const Surtidor = () => {
   ];
 
   return (
-    <Box sx={{ width: "100%", height: 600, marginTop: "10px" }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        marginTop: "10px",
+        marginBottom: "40px",
+      }}
+    >
       <Typography component="div" variant="h4" textAlign="center">
         Selecciona el surtidor
       </Typography>
-      <Stack spacing={4} direction={"column"} marginTop="10px">
-        <Stack
-          spacing={2}
-          direction={"row"}
-          display="flex"
-          justifyContent="space-around"
-        >
-          <Card
-            sx={{
-              width: 300,
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+      <Grid container spacing={2} marginTop="10px">
+        {surtidores.map((surtidor) => (
+          <Grid
+            item
+            xs={6}
+            key={surtidor.id}
+            gap={8}
+            onClick={() => clickSurtidor(surtidor.id)}
           >
-            <Typography component="div" variant="h5" textAlign="center">
-              Surtidor 1
-            </Typography>
-            <CardContent>
-              <img src={CarImage} alt="image" width="150px" />
-            </CardContent>
-          </Card>
-          <Card
-            sx={{
-              width: 300,
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography component="div" variant="h5" textAlign="center">
-              Surtidor 2
-            </Typography>
-            <CardContent>
-              <img src={CarImage} alt="image" width="150px" />
-            </CardContent>
-          </Card>
-        </Stack>
-        <Stack
-          spacing={2}
-          direction={"row"}
-          display="flex"
-          justifyContent="space-around"
-        >
-          <Card
-            sx={{
-              width: 300,
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography component="div" variant="h5" textAlign="center">
-              Surtidor 3
-            </Typography>
-            <CardContent>
-              <img src={CarImage} alt="image" width="150px" />
-            </CardContent>
-          </Card>
-          <Card
-            sx={{
-              width: 300,
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography component="div" variant="h5" textAlign="center">
-              Surtidor 4
-            </Typography>
-            <CardContent>
-              <img src={CarImage} alt="image" width="150px" />
-            </CardContent>
-          </Card>
-        </Stack>
-        <Stack
-          spacing={2}
-          direction={"row"}
-          display="flex"
-          justifyContent="space-around"
-        >
-          <Card
-            sx={{
-              width: 300,
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography component="div" variant="h5" textAlign="center">
-              Surtidor 5
-            </Typography>
-            <CardContent>
-              <img src={CarImage} alt="image" width="150px" />
-            </CardContent>
-          </Card>
-          <Card
-            sx={{
-              width: 300,
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography component="div" variant="h5" textAlign="center">
-              Surtidor 6
-            </Typography>
-            <CardContent>
-              <img src={CarImage} alt="image" width="150px" />
-            </CardContent>
-          </Card>
-        </Stack>
-      </Stack>
+            <Card
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                borderRadius: "10px",
+                boxShadow: "0px 4px 10px -3px rgb(117 117 177);",
+                "&:hover": {
+                  background: "linear-gradient(to right, #0f3443, #34e69f)",
+                  transform: "translateY(-5px)",
+                  color: "white",
+                  boxShadow: "5px 10px 18px #888888",
+                },
+              }}
+            >
+              <Typography
+                component="div"
+                variant="h5"
+                textTransform="capitalize"
+              >
+                {surtidor.name}
+              </Typography>
+              <CardContent>
+                <img src={CarImage} alt="Click image" width="100px" />
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };
