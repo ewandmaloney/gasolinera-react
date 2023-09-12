@@ -29,8 +29,8 @@ const Home = () => {
             background: "linear-gradient(to right, #0f3443, #34e69f)",
             "&:hover": {
               transform: "translateY(-5px)",
-              boxShadow: "5px 10px 18px #888888"
-            }
+              boxShadow: "5px 10px 18px #888888",
+            },
           }}
         >
           <Typography component="div" variant="h3" color="white">
