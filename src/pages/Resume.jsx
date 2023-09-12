@@ -17,6 +17,7 @@ const Resume = () => {
   const navigate = useNavigate();
 
   const backToHome = () => {
+    localStorage.clear();
     navigate("/home");
   };
 
